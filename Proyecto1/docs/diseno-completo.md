@@ -56,25 +56,28 @@ pide la rúbrica.
 
 | Extremo A | Puerto A | Extremo B | Puerto B | Cable |
 |---|---|---|---|---|
-| MSW-NORTE | Gi1/0/1 | MSW-IZQ-GW | Gi1/0/1 | Fibra óptica |
-| MSW-NORTE | Gi1/0/2 | MSW-DER-GW | Gi1/0/1 | Fibra óptica |
-| MSW-NORTE | Gi1/0/3 | MSW-ADMIN | Gi1/0/1 | Fibra óptica |
-| MSW-IZQ-GW | Gi1/0/2 | MSW-ADMIN | Gi1/0/2 | Fibra óptica |
-| MSW-DER-GW | Gi1/0/2 | MSW-ADMIN | Gi1/0/3 | Fibra óptica |
-| MSW-IZQ-GW | Gi1/0/3 | MSW-DER-GW | Gi1/0/3 | Fibra óptica |
-| MSW-NORTE | Gi1/0/4 | SRV-DHCP-IZQ | FastEthernet0 | Cobre recto |
-| MSW-NORTE | Gi1/0/5 | SRV-DHCP-DER | FastEthernet0 | Cobre recto |
-| MSW-IZQ-GW | Gi1/0/4 | CORE-IZQ-A | Gi0/1 | Fibra óptica |
-| MSW-DER-GW | Gi1/0/4 | DIST-DER | Gi0/1 | Cobre recto (miembro Po3) |
-| MSW-DER-GW | Gi1/0/5 | DIST-DER | Gi0/2 | Cobre recto (miembro Po3) |
-| MSW-ADMIN | Fa0/1 | PC-ADMIN | FastEthernet0 | Cobre recto |
+| MSW-NORTE | Gi1/1/1 | MSW-IZQ-GW | Gi1/1/1 | Fibra óptica |
+| MSW-NORTE | Gi1/1/2 | MSW-DER-GW | Gi1/1/1 | Fibra óptica |
+| MSW-NORTE | Gi1/1/3 | MSW-ADMIN | Gi1/1/1 | Fibra óptica |
+| MSW-IZQ-GW | Gi1/1/2 | MSW-ADMIN | Gi1/1/2 | Fibra óptica |
+| MSW-DER-GW | Gi1/1/2 | MSW-ADMIN | Gi1/1/3 | Fibra óptica |
+| MSW-IZQ-GW | Gi1/1/3 | MSW-DER-GW | Gi1/1/2 | Fibra óptica |
+| MSW-NORTE | Gi1/0/1 | SRV-DHCP-IZQ | FastEthernet0 | Cobre recto |
+| MSW-NORTE | Gi1/0/2 | SRV-DHCP-DER | FastEthernet0 | Cobre recto |
+| MSW-IZQ-GW | Gi1/1/4 | CORE-IZQ-A | Gi0/1 | Fibra óptica |
+| MSW-DER-GW | Gi1/0/1 | DIST-DER | Gi0/1 | Cobre recto (miembro Po3) |
+| MSW-DER-GW | Gi1/0/2 | DIST-DER | Gi0/2 | Cobre recto (miembro Po3) |
+| MSW-ADMIN | Gi1/0/1 | PC-ADMIN | FastEthernet0 | Cobre recto |
 
 > En Packet Tracer, el 3650-24PS ya trae slots SFP integrados (no es modular como
 > el 2960). Para poner fibra: apaga el switch (botón físico), en la pestaña
 > *Physical* arrastra el módulo `GLC-LH-SMD` desde la lista de MODULES hacia uno
 > de los slots SFP vacíos (los cuadros pequeños junto a los 24 puertos normales),
 > vuelve a encenderlo, y ahí conecta el cable de fibra. Repite un módulo por cada
-> puerto de fibra que necesites en ese switch.
+> puerto de fibra que necesites en ese switch. **Importante:** esos slots SFP se
+> numeran aparte de los 24 puertos de cobre fijos, por eso aparecen como
+> `GigabitEthernet1/1/1`, `1/1/2`, `1/1/3`... (módulo 1/1) mientras los puertos de
+> cobre normales siguen siendo `GigabitEthernet1/0/1`–`1/0/24` (módulo 1/0).
 
 ### 3.2 Edificio Izquierdo (interno)
 
@@ -140,23 +143,23 @@ enable
 configure terminal
 hostname MSW-NORTE
 no ip domain-lookup
-interface GigabitEthernet1/0/1
+interface GigabitEthernet1/1/1
  no switchport
  ip address 10.4.35.1 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/2
+interface GigabitEthernet1/1/2
  no switchport
  ip address 10.4.35.5 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/3
+interface GigabitEthernet1/1/3
  no switchport
  ip address 10.4.35.21 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/4
+interface GigabitEthernet1/0/1
  no switchport
  ip address 10.4.35.33 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/5
+interface GigabitEthernet1/0/2
  no switchport
  ip address 10.4.35.37 255.255.255.252
  no shutdown
@@ -177,19 +180,19 @@ write memory
 enable
 configure terminal
 hostname MSW-IZQ-GW
-interface GigabitEthernet1/0/1
+interface GigabitEthernet1/1/1
  no switchport
  ip address 10.4.35.2 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/2
+interface GigabitEthernet1/1/2
  no switchport
  ip address 10.4.35.9 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/3
+interface GigabitEthernet1/1/3
  no switchport
  ip address 10.4.35.17 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/4
+interface GigabitEthernet1/1/4
  no switchport
  ip address 10.4.35.26 255.255.255.252
  no shutdown
@@ -209,21 +212,21 @@ write memory
 enable
 configure terminal
 hostname MSW-DER-GW
-interface GigabitEthernet1/0/1
+interface GigabitEthernet1/1/1
  no switchport
  ip address 10.4.35.6 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/2
+interface GigabitEthernet1/1/2
  no switchport
  ip address 10.4.35.13 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/3
+interface GigabitEthernet1/1/3
  no switchport
  ip address 10.4.35.18 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/4
+interface GigabitEthernet1/0/1
  channel-group 3 mode desirable
-interface GigabitEthernet1/0/5
+interface GigabitEthernet1/0/2
  channel-group 3 mode desirable
 interface Port-channel3
  no switchport
@@ -245,17 +248,17 @@ write memory
 enable
 configure terminal
 hostname MSW-ADMIN
-interface GigabitEthernet1/0/1
+interface GigabitEthernet1/1/1
+ no switchport
+ ip address 10.4.35.22 255.255.255.252
+ no shutdown
+interface GigabitEthernet1/1/2
  no switchport
  ip address 10.4.35.10 255.255.255.252
  no shutdown
-interface GigabitEthernet1/0/2
+interface GigabitEthernet1/1/3
  no switchport
  ip address 10.4.35.14 255.255.255.252
- no shutdown
-interface GigabitEthernet1/0/3
- no switchport
- ip address 10.4.35.22 255.255.255.252
  no shutdown
 vlan 99
  name VLAN_ADMIN_202300335
@@ -263,7 +266,7 @@ interface Vlan99
  ip address 192.188.35.129 255.255.255.240
  ip helper-address 10.4.35.34
  no shutdown
-interface FastEthernet0/1
+interface GigabitEthernet1/0/1
  switchport mode access
  switchport access vlan 99
 router eigrp 35
