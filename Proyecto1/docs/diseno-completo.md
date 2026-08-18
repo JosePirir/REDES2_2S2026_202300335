@@ -64,7 +64,7 @@ pide la rúbrica.
 | MSW-IZQ-GW | Gi1/1/3 | MSW-DER-GW | Gi1/1/3 | Fibra óptica |
 | MSW-NORTE | Gi1/0/1 | SRV-DHCP-IZQ | Fa0/1 | Cobre recto |
 | MSW-NORTE | Gi1/0/2 | SRV-DHCP-DER | Fa0/1 | Cobre recto |
-| MSW-IZQ-GW | Gi1/1/4 | CORE-IZQ-A | Gi0/1 | Fibra óptica |
+| MSW-IZQ-GW | Gi1/0/1 | CORE-IZQ-A | Gi0/1 | Cobre recto |
 | MSW-DER-GW | Gi1/0/1 | DIST-DER | Gi0/1 | Cobre recto (miembro Po3) |
 | MSW-DER-GW | Gi1/0/2 | DIST-DER | Gi0/2 | Cobre recto (miembro Po3) |
 | MSW-ADMIN | Gi1/0/1 | PC-ADMIN | FastEthernet0 | Cobre recto |
@@ -192,7 +192,7 @@ interface GigabitEthernet1/1/3
  no switchport
  ip address 10.4.35.17 255.255.255.252
  no shutdown
-interface GigabitEthernet1/1/4
+interface GigabitEthernet1/0/1
  no switchport
  ip address 10.4.35.26 255.255.255.252
  no shutdown
