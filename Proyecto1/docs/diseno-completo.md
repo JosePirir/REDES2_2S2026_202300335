@@ -61,7 +61,7 @@ pide la rúbrica.
 | MSW-NORTE | Gi1/1/3 | MSW-ADMIN | Gi1/1/1 | Fibra óptica |
 | MSW-IZQ-GW | Gi1/1/2 | MSW-ADMIN | Gi1/1/2 | Fibra óptica |
 | MSW-DER-GW | Gi1/1/2 | MSW-ADMIN | Gi1/1/3 | Fibra óptica |
-| MSW-IZQ-GW | Gi1/1/3 | MSW-DER-GW | Gi1/1/2 | Fibra óptica |
+| MSW-IZQ-GW | Gi1/1/3 | MSW-DER-GW | Gi1/1/3 | Fibra óptica |
 | MSW-NORTE | Gi1/0/1 | SRV-DHCP-IZQ | FastEthernet0 | Cobre recto |
 | MSW-NORTE | Gi1/0/2 | SRV-DHCP-DER | FastEthernet0 | Cobre recto |
 | MSW-IZQ-GW | Gi1/1/4 | CORE-IZQ-A | Gi0/1 | Fibra óptica |
