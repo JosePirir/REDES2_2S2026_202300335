@@ -69,9 +69,12 @@ pide la rúbrica.
 | MSW-DER-GW | Gi1/0/5 | DIST-DER | Gi0/2 | Cobre recto (miembro Po3) |
 | MSW-ADMIN | Fa0/1 | PC-ADMIN | FastEthernet0 | Cobre recto |
 
-> En Packet Tracer, para poner fibra en un 3650/3560 primero apaga el equipo
-> (botón físico), agrega un módulo `PT-SWITCH-NM-1GBIC` o similar a un slot vacío,
-> enciéndelo, y ahí conecta el cable de fibra.
+> En Packet Tracer, el 3650-24PS ya trae slots SFP integrados (no es modular como
+> el 2960). Para poner fibra: apaga el switch (botón físico), en la pestaña
+> *Physical* arrastra el módulo `GLC-LH-SMD` desde la lista de MODULES hacia uno
+> de los slots SFP vacíos (los cuadros pequeños junto a los 24 puertos normales),
+> vuelve a encenderlo, y ahí conecta el cable de fibra. Repite un módulo por cada
+> puerto de fibra que necesites en ese switch.
 
 ### 3.2 Edificio Izquierdo (interno)
 
