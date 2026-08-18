@@ -104,8 +104,8 @@ Total: **5 EtherChannels LACP** (Po1–Po5), todos Capa 2.
 
 | Extremo A | Puerto A | Extremo B | Puerto B | EtherChannel | Cable |
 |---|---|---|---|---|---|
-| DIST-DER | Gi0/1 | MSW-DER-GW | Gi1/0/4 | Po3 (PAgP, **Capa 3**) | Cobre |
-| DIST-DER | Gi0/2 | MSW-DER-GW | Gi1/0/5 | Po3 (PAgP, **Capa 3**) | Cobre |
+| DIST-DER | Gi0/1 | MSW-DER-GW | Gi1/0/1 | Po3 (PAgP, **Capa 3**) | Cobre |
+| DIST-DER | Gi0/2 | MSW-DER-GW | Gi1/0/2 | Po3 (PAgP, **Capa 3**) | Cobre |
 | DIST-DER | Fa0/1 | ACC-DER-A | Fa0/1 | Po1 (PAgP, Capa 2) | Cobre |
 | DIST-DER | Fa0/2 | ACC-DER-A | Fa0/2 | Po1 (PAgP, Capa 2) | Cobre |
 | DIST-DER | Fa0/3 | ACC-DER-B | Fa0/1 | Po2 (PAgP, Capa 2) | Cobre |
